@@ -2,13 +2,14 @@ Summary:	Small window manager
 Summary(pl):	Ma³y zarz±dca okien dla X Window
 Name:		swm
 Version:	1.3.4
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Window Managers
 Source0:	http://www.small-window-manager.de/%{name}-%{version}-src.tgz
 # Source0-md5:	70df4f59ee8584bb3f11056c1ade1d9b
 Source1:	%{name}-xsession.desktop
 Patch0:		%{name}-make.patch
+Patch1:		%{name}-amd64.patch
 URL:		http://www.small-window-manager.de/
 BuildRequires:	XFree86-devel
 BuildRequires:	rpm-build >= 4.0.2-48
@@ -36,6 +37,7 @@ Mandrake 8.1, Linux Mandrake 8.0, RedHat 6.0, Debian 2.0.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} -C src -f Makefile-xpm \
