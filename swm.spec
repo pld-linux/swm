@@ -7,14 +7,13 @@ License:	GPL
 Group:		X11/Window Managers
 Source0:	http://www.small-window-manager.de/%{name}-%{version}-src.tgz
 # Source0-md5:	70df4f59ee8584bb3f11056c1ade1d9b
+Source1:	%{name}-xsession.desktop
 Patch0:		%{name}-make.patch
 URL:		http://www.small-window-manager.de/
 BuildRequires:	XFree86-devel
 BuildRequires:	rpm-build >= 4.0.2-48
 %{?_with_epistrophy:Requires:	epistrophy}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_sysconfdir	/etc/X11/%{name}
 
 %description
 sWM is a very small and fast window manager for the X Window System.
@@ -45,11 +44,15 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},/usr/share/swm,%{_mandir}/{man1,de/man1}}
+install -d \
+	$RPM_BUILD_ROOT{%{_bindir},%{_datadir}/{%{name},xsessions}} \
+	$RPM_BUILD_ROOT%{_mandir}/{man1,de/man1}
 
 cd src
 %{__make} -f Makefile-xpm install DESTDIR=$RPM_BUILD_ROOT
 cd ..
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/xsessions/%{name}.desktop
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,7 +61,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/
 %attr(755,root,root) %{_bindir}/*
-%dir /usr/share/swm
-/usr/share/swm/*
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/*
+%{_datadir}/xsessions/%{name}.desktop
 %{_mandir}/man1/*
 %lang(de) %{_mandir}/de/man1/*
