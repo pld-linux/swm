@@ -12,7 +12,7 @@
 -	gzip -f -9 $(INSTALLROOT)/$(XROOT)/man/man1/swm-de.1x
 -	cp startswm $(INSTALLROOT)/$(XROOT)/bin
 -	cp -v -f -r ../share/ $(INSTALLROOT)/usr/
-+	install -s swm $(DESTDIR)/$(XROOT)/bin
++	install swm $(DESTDIR)/$(XROOT)/bin
 +	cp -f swm.1x $(DESTDIR)/$(XROOT)/man/man1
 +	cp -f swm-de.1x $(DESTDIR)/$(XROOT)/man/de/man1/swm.1x
 +	cp startswm $(DESTDIR)/$(XROOT)/bin
@@ -53,7 +53,7 @@
 -	gzip -f -9 $(XROOT)/man/man1/swmswitch.1x
 -	install -s swmswitch $(XROOT)/bin
 +	cp -f swmswitch.1x $(DESTDIR)$(XROOT)/man/man1
-+	install -s swmswitch $(DESTDIR)$(XROOT)/bin
++	install swmswitch $(DESTDIR)$(XROOT)/bin
  
  rpm-build: all
  	install -s swmswitch ../../rpm-build$(XROOT)/bin
