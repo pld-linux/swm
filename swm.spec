@@ -11,7 +11,6 @@ Source1:	%{name}-xsession.desktop
 Patch0:		%{name}-make.patch
 URL:		http://www.small-window-manager.de/
 BuildRequires:	XFree86-devel
-BuildRequires:	XFree86-libs
 BuildRequires:	rpm-build >= 4.0.2-48
 %{?_with_epistrophy:Requires:	epistrophy}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,11 +38,17 @@ Mandrake 8.1, Linux Mandrake 8.0, RedHat 6.0, Debian 2.0.
 %patch0 -p1
 
 %build
-cd src
-%{__make} -f Makefile-xpm CFLAGS="%{rpmcflags} %{rpmldflags}" XROOT=%{_bindir}
-cd ..
-%{__make} -C swmswitch
-%{__make} -C swmbg
+%{__make} -C src -f Makefile-xpm \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags}"
+
+%{__make} -C swmswitch \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -Wall"
+
+%{__make} -C swmbg \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -55,9 +60,9 @@ install src/startswm $RPM_BUILD_ROOT%{_bindir}
 install src/swm $RPM_BUILD_ROOT%{_bindir}
 install swmswitch/swmswitch $RPM_BUILD_ROOT%{_bindir}
 
-install src/swm.1x $RPM_BUILD_ROOT%{_mandir}/man1/
-install swmswitch/swmswitch.1x $RPM_BUILD_ROOT%{_mandir}/man1/
-install swmbg/swmbg.1x $RPM_BUILD_ROOT%{_mandir}/man1/swmbg.1x
+install src/swm.1x $RPM_BUILD_ROOT%{_mandir}/man1
+install swmswitch/swmswitch.1x $RPM_BUILD_ROOT%{_mandir}/man1
+install swmbg/swmbg.1x $RPM_BUILD_ROOT%{_mandir}/man1
 install src/swm-de.1x $RPM_BUILD_ROOT%{_mandir}/de/man1/swm.1x
 install swmbg/swmbg-de.1x $RPM_BUILD_ROOT%{_mandir}/de/man1/swmbg.1x
 
@@ -71,10 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/
+%doc doc
 %attr(755,root,root) %{_bindir}/*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/*
+%{_datadir}/%{name}
 %{_datadir}/xsessions/%{name}.desktop
 %{_mandir}/man1/*
 %lang(de) %{_mandir}/de/man1/*
