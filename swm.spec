@@ -1,3 +1,5 @@
+# Conditional build:
+%bcond_with	epistrophy	# ???
 Summary:	Small window manager
 Summary(pl):	Ma³y zarz±dca okien dla X Window
 Name:		swm
@@ -13,7 +15,7 @@ Patch1:		%{name}-amd64.patch
 URL:		http://www.small-window-manager.de/
 BuildRequires:	XFree86-devel
 BuildRequires:	rpm-build >= 4.0.2-48
-%{?_with_epistrophy:Requires:	epistrophy}
+%{?with_epistrophy:Requires:	epistrophy}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
