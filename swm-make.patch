@@ -1,0 +1,77 @@
+--- swm-1.3.4/src/Makefile-xpm.orig	Fri Nov  1 19:24:02 2002
++++ swm-1.3.4/src/Makefile-xpm	Fri Nov  1 19:30:59 2002
+@@ -27,21 +27,13 @@
+ 	$(CC) -c $(CFLAGS) $(DEFINES) $(INCLPATH) $<
+ 
+ install: 
+-	install -s swm $(INSTALLROOT)/$(XROOT)/bin
+-	rm -f $(INSTALLROOT)/$(XROOT)/man/man1/swm.* $(INSTALLROOT)/$(XROOT)/man/man1/swm-* 
+-	cp -f swm.1x $(INSTALLROOT)/$(XROOT)/man/man1
+-	cp -f swm-de.1x $(INSTALLROOT)/$(XROOT)/man/man1
+-	gzip -f -9 $(INSTALLROOT)/$(XROOT)/man/man1/swm.1x
+-	gzip -f -9 $(INSTALLROOT)/$(XROOT)/man/man1/swm-de.1x
+-	cp startswm $(INSTALLROOT)/$(XROOT)/bin
+-	cp -v -f -r ../share/ $(INSTALLROOT)/usr/
++	install -s swm $(DESTDIR)/$(XROOT)/bin
++	cp -f swm.1x $(DESTDIR)/$(XROOT)/man/man1
++	cp -f swm-de.1x $(DESTDIR)/$(XROOT)/man/de/man1/swm.1x
++	cp startswm $(DESTDIR)/$(XROOT)/bin
++	cp -v -f -r ../share/ $(DESTDIR)/usr/
+ 	cd ../swmswitch ; make install ; cd -
+ 	cd ../swmbg ; make install ; cd -
+-	rm -rf $(INSTALLROOT)/usr/share/doc/swm
+-	mkdir $(INSTALLROOT)/usr/share/doc/swm
+-	cp -r ../doc/* $(INSTALLROOT)/usr/share/doc/swm/
+-	install ../examples/wmsession.d/12SWM /etc/X11/wmsession.d/ 
+-	if [ -x /usr/sbin/fndSession ]; then /usr/sbin/fndSession || true ; fi
+ 
+ rpm-build: 
+ 	install -s swm ../../rpm-build$(XROOT)/bin
+@@ -77,10 +69,10 @@
+ 	cp -f ../examples/wmsession.d/12SWM ../../rpm-build/etc/X11/wmsession.d/
+ 
+ uninstall: all
+-	rm $(INSTALLROOT)/$(XROOT)/bin/swm $(INSTALLROOT)/$(XROOT)/bin/startswm 
+-	rm $(INSTALLROOT)/$(XROOT)/man/man1/swm*
+-	rm -f $(INSTALLROOT)/usr/doc/swm*
+-	rm -rf $(INSTALLROOT)/usr/share/swm
++	rm $(DESTDIR)/$(XROOT)/bin/swm $(DESTDIR)/$(XROOT)/bin/startswm 
++	rm $(DESTDIR)/$(XROOT)/man/man1/swm*
++	rm -f $(DESTDIR)/usr/doc/swm*
++	rm -rf $(DESTDIR)/usr/share/swm
+ 
+ clean:
+ 	rm -f *~ swm core *.o $(OBJS)
+--- swm-1.3.4/swmswitch/Makefile.orig	Fri Nov  1 19:28:50 2002
++++ swm-1.3.4/swmswitch/Makefile	Fri Nov  1 19:29:35 2002
+@@ -20,10 +20,8 @@
+ 	$(CC) -c $(CFLAGS) $(DEFINES) $(INCLPATH) $<
+ 
+ install: all 
+-	rm -f $(XROOT)/man/man1/swmswitch*
+-	cp -f swmswitch.1x $(XROOT)/man/man1
+-	gzip -f -9 $(XROOT)/man/man1/swmswitch.1x
+-	install -s swmswitch $(XROOT)/bin
++	cp -f swmswitch.1x $(DESTDIR)$(XROOT)/man/man1
++	install -s swmswitch $(DESTDIR)$(XROOT)/bin
+ 
+ rpm-build: all
+ 	install -s swmswitch ../../rpm-build$(XROOT)/bin
+--- swm-1.3.4/swmbg/Makefile.orig	Fri Nov  1 19:26:45 2002
++++ swm-1.3.4/swmbg/Makefile	Fri Nov  1 19:28:14 2002
+@@ -20,12 +20,9 @@
+ 	$(CC) -c $(CFLAGS) $(DEFINES) $(INCLPATH) $<
+ 
+ install: all
+-	rm -f $(XROOT)/man/man1/swmbg*
+-	cp -f swmbg.1x $(XROOT)/man/man1
+-	cp -f swmbg-de.1x $(XROOT)/man/man1
+-	gzip -f -9 $(XROOT)/man/man1/swmbg.1x
+-	gzip -f -9 $(XROOT)/man/man1/swmbg-de.1x
+-	cp -v -f -r pixmaps/ /usr/share/swm/
++	cp -f swmbg.1x $(DESTDIR)/$(XROOT)/man/man1
++	cp -f swmbg-de.1x $(DESTDIR)/$(XROOT)/man/de/man1/swmbg.1x
++	cp -v -f -r pixmaps/ $(DESTDIR)/usr/share/swm/
+ 
+ rpm-build: all
+ 	install -s swmbg ../../rpm-build$(XROOT)/bin
