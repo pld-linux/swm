@@ -2,7 +2,7 @@ Summary:	Small window manager
 Summary(pl):	Ma³y zarz±dca okien dla X Window
 Name:		swm
 Version:	1.3.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Window Managers
 Source0:	http://www.small-window-manager.de/%{name}-%{version}-src.tgz
@@ -11,6 +11,7 @@ Source1:	%{name}-xsession.desktop
 Patch0:		%{name}-make.patch
 URL:		http://www.small-window-manager.de/
 BuildRequires:	XFree86-devel
+BuildRequires:	XFree86-libs
 BuildRequires:	rpm-build >= 4.0.2-48
 %{?_with_epistrophy:Requires:	epistrophy}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
