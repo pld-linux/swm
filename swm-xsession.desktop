@@ -6,3 +6,4 @@ TryExec=swm
 Name=SWM
 Comment=A Small window manager for X Window System 
 Comment[pl]=Mały zarządca okien dla X Window
+# vi: encoding=utf-8
