@@ -39,8 +39,10 @@ Mandrake 8.1, Linux Mandrake 8.0, RedHat 6.0, Debian 2.0.
 
 %build
 cd src
-%{__make} -f Makefile-xpm CFLAGS="%{rpmcflags} %{rpmldflags}"
+%{__make} -f Makefile-xpm CFLAGS="%{rpmcflags} %{rpmldflags}" XROOT=%{_bindir}
 cd ..
+%{__make} -C swmswitch
+%{__make} -C swmbg
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -48,9 +50,18 @@ install -d \
 	$RPM_BUILD_ROOT{%{_bindir},%{_datadir}/{%{name},xsessions}} \
 	$RPM_BUILD_ROOT%{_mandir}/{man1,de/man1}
 
-cd src
-%{__make} -f Makefile-xpm install DESTDIR=$RPM_BUILD_ROOT
-cd ..
+install src/startswm $RPM_BUILD_ROOT%{_bindir}
+install src/swm $RPM_BUILD_ROOT%{_bindir}
+install swmswitch/swmswitch $RPM_BUILD_ROOT%{_bindir}
+
+install src/swm.1x $RPM_BUILD_ROOT%{_mandir}/man1/
+install swmswitch/swmswitch.1x $RPM_BUILD_ROOT%{_mandir}/man1/
+install swmbg/swmbg.1x $RPM_BUILD_ROOT%{_mandir}/man1/swmbg.1x
+install src/swm-de.1x $RPM_BUILD_ROOT%{_mandir}/de/man1/swm.1x
+install swmbg/swmbg-de.1x $RPM_BUILD_ROOT%{_mandir}/de/man1/swmbg.1x
+
+cp -rdp share/swm $RPM_BUILD_ROOT%{_datadir}
+cp -rdp swmbg/pixmaps $RPM_BUILD_ROOT%{_datadir}/swm
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/xsessions/%{name}.desktop
 
