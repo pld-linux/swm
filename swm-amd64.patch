@@ -1,0 +1,43 @@
+diff -ur swm-1.3.4.orig/src/Makefile-xpm swm-1.3.4/src/Makefile-xpm
+--- swm-1.3.4.orig/src/Makefile-xpm	2002-02-04 12:51:06.000000000 +0100
++++ swm-1.3.4/src/Makefile-xpm	2004-09-20 23:51:12.296058392 +0200
+@@ -12,7 +12,7 @@
+ 
+ XROOT    = /usr/X11R6
+ INCLPATH = -I$(XROOT)/include
+-LDPATH   = -L$(XROOT)/lib
++LDPATH   = -L$(XROOT)/lib -L$(XROOT)/lib64
+ 
+ HEADERS  = swm.h eventHandler.c gnome.c init.c client.c tools.c 
+ OBJS     = swm.o 
+@@ -88,4 +88,4 @@
+ mrproper:
+ 	rm -f *~ swm core *.o $(OBJS)
+ 	cp -f Makefile.org Makefile
+-	
+\ No newline at end of file
++	
+diff -ur swm-1.3.4.orig/swmbg/Makefile swm-1.3.4/swmbg/Makefile
+--- swm-1.3.4.orig/swmbg/Makefile	2001-10-09 18:01:43.000000000 +0200
++++ swm-1.3.4/swmbg/Makefile	2004-09-20 23:51:26.107958664 +0200
+@@ -6,7 +6,7 @@
+ 
+ XROOT    = /usr/X11R6
+ INCLPATH = -I$(XROOT)/include
+-LDPATH   = -L$(XROOT)/lib
++LDPATH   = -L$(XROOT)/lib -L$(XROOT)/lib64
+ 
+ BGOBJS   = swmbg.o 
+ 
+diff -ur swm-1.3.4.orig/swmswitch/Makefile swm-1.3.4/swmswitch/Makefile
+--- swm-1.3.4.orig/swmswitch/Makefile	2001-10-10 13:17:13.000000000 +0200
++++ swm-1.3.4/swmswitch/Makefile	2004-09-20 23:51:34.533677760 +0200
+@@ -6,7 +6,7 @@
+ 
+ XROOT    = /usr/X11R6
+ INCLPATH = -I$(XROOT)/include
+-LDPATH   = -L$(XROOT)/lib
++LDPATH   = -L$(XROOT)/lib -L$(XROOT)/lib64
+ 
+ SWOBJS   = swmswitch.o 
+ 
