@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Window Managers
 Source0:	http://www.small-window-manager.de/%{name}-%{version}-src.tgz
+# Source0-md5:	70df4f59ee8584bb3f11056c1ade1d9b
 Patch0:		%{name}-make.patch
 URL:		http://www.small-window-manager.de/
 BuildRequires:	XFree86-devel
