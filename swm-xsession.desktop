@@ -5,4 +5,4 @@ Exec=swm
 TryExec=swm
 Name=SWM
 Comment=A Small window manager for X Window System 
-Comment[nl]=Ma³y zarz±dca okien dla X Window
+Comment[pl]=Ma³y zarz±dca okien dla X Window
