@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Exec=swm
+TryExec=swm
+Name=SWM
+Comment=A Small window manager for X Window System 
+Comment[nl]=Ma³y zarz±dca okien dla X Window
