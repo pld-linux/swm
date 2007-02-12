@@ -3,7 +3,7 @@
 %bcond_with	epistrophy	# ???
 #
 Summary:	Small window manager
-Summary(pl.UTF-8):   Mały zarządca okien dla X Window
+Summary(pl.UTF-8):	Mały zarządca okien dla X Window
 Name:		swm
 Version:	1.3.4
 Release:	3
