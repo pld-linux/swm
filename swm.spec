@@ -3,7 +3,7 @@
 %bcond_with	epistrophy	# ???
 #
 Summary:	Small window manager
-Summary(pl):	Ma³y zarz±dca okien dla X Window
+Summary(pl.UTF-8):   MaÅ‚y zarzÄ…dca okien dla X Window
 Name:		swm
 Version:	1.3.4
 Release:	3
@@ -29,13 +29,13 @@ a rather unusual or exotic plattform please *please* send me a mail so
 your system can be listed. :-) sWM was tested under: Linux Mandrake
 8.1, Linux Mandrake 8.0, RedHat 6.0, Debian 2.0.
 
-%description -l pl
-sWM jest bardzo ma³ym i szybkim zarz±dc± okien dla X Window System.
-Powinien dzia³aæ pod dowoln± wersj± Linuksa, BSD, UNIX i innych
-zgodnych z nimi systemów. sWM zosta³ zaprojektowany by dzia³aæ
-efektywnie nawet na Linux-PDA takich jak Compaq iPAQ. Je¿eli u¿ywasz
-go na jakiej¶ egzotycznej platformie proszê *proszê* przy¶lij
-wiadomo¶æ e-mail, to i Twój system zostanie tu wymieniony. sWM by³
+%description -l pl.UTF-8
+sWM jest bardzo maÅ‚ym i szybkim zarzÄ…dcÄ… okien dla X Window System.
+Powinien dziaÅ‚aÄ‡ pod dowolnÄ… wersjÄ… Linuksa, BSD, UNIX i innych
+zgodnych z nimi systemÃ³w. sWM zostaÅ‚ zaprojektowany by dziaÅ‚aÄ‡
+efektywnie nawet na Linux-PDA takich jak Compaq iPAQ. JeÅ¼eli uÅ¼ywasz
+go na jakiejÅ› egzotycznej platformie proszÄ™ *proszÄ™* przyÅ›lij
+wiadomoÅ›Ä‡ e-mail, to i TwÃ³j system zostanie tu wymieniony. sWM byÅ‚
 testowany na Linuksach: Mandrake 8.1, Mandrake 8.0, RedHat 6.0, Debian
 2.0.
 
